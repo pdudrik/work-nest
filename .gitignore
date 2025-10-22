@@ -1,0 +1,5 @@
+.venv/
+work_nest/employees/
+work_nest/staff/__pycache__/
+work_nest/work_nest/__pycache__/
+work_nest/db.sqlite3
