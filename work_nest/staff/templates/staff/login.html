@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Login
+{% endblock title %}
+
+{% block error %}
+    {% if form.errors %}
+        <p class="error-message", style="color:red">Invalid username or password.</p>
+    {% endif %}
+{% endblock error %}
+
+
+{% block content %}
+    <h1>Login to your account</h1>
+    <form action="{% url 'staff:login' %}" method="post">
+        {% csrf_token %}
+
+        <div>
+            {{ form.username.label_tag }}<br>
+            {{ form.username }}
+        </div>
+        <div>
+            {{ form.password.label_tag }}<br>
+            {{ form.password }}
+        </div>
+
+        {% if next %}
+            <input type="hidden" name="next" value="{{ next }}">
+        {% endif %}
+
+        <label>
+            <input type="checkbox" name="remember_me"> Remember me
+        </label>
+
+        <button>Log in</button>
+    </form>
+    
+    <p>
+        <a href="#password-reset">Forgot password?</a>
+    </p>
+{% endblock content %}
