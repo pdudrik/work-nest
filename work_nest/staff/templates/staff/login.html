@@ -12,31 +12,85 @@
 
 
 {% block content %}
-    <h1>Login to your account</h1>
-    <form action="{% url 'staff:login' %}" method="post">
-        {% csrf_token %}
+    <section class="vh-100">
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                    <div class="card text-white" style="border-radius: 1rem; background-color: rgba(60, 68, 77, 1)">
+                        <div class="card-body p-5 text-center">
 
-        <div>
-            {{ form.username.label_tag }}<br>
-            {{ form.username }}
-        </div>
-        <div>
-            {{ form.password.label_tag }}<br>
-            {{ form.password }}
-        </div>
+                            <div class="mb-md-5 mt-md-4 pb-5">
+                                <form action="{% url 'staff:login' %}" method="post">
+                                    {% csrf_token %}
 
-        {% if next %}
+                                    <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
+                                    <p class="text-white-50 mb-5">Please enter your login and password!</p>
+                                    
+                                    <div class="form-outline form-white mb-4">
+                                        <label class="form-label">Username</label>
+                                        {% comment %} <input type="email" id="typeEmailX" class="form-control form-control-lg" /> {% endcomment %}
+                                        {{ form.username }}
+                                    </div>
+                                    
+                                    <div class="form-outline form-white mb-4">
+                                        <label class="form-label">Password</label>
+                                        {{ form.password }}
+                                        {% comment %} <input type="password" id="typePasswordX" class="form-control form-control-lg" /> {% endcomment %}
+                                    </div>
+                                    
+                                    <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="#!">Forgot password?</a></p>
+                                    
+                                    <button class="btn btn-outline-light btn-lg px-5" type="submit">Login</button>
+                                </form>
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+        {% comment %} <div class="row mt-5">
+            <div class="col-12">
+                <p class="fs-1 fw-bold text-center">Login to your account</p>
+            </div>
+        </div>
+        <form action="{% url 'staff:login' %}" method="post" class="row">
+            {% csrf_token %}
+        
+            <div class="col-12">
+                <label class="form-label">Username</label>
+                {{ form.username }}
+                {{ form.username.errors }}
+            </div>
+
+            <div class="col-12 mt-3">
+                <label class="form-label">Password</label>
+                {{ form.password }}
+                {{ form.password.errors }}
+            </div>
+            
+            <div class="col-12">
+                <label>
+                    <input type="checkbox" name="remember_me"> Remember me
+                </label>
+            </div>
+            
+            {% if next %}
             <input type="hidden" name="next" value="{{ next }}">
-        {% endif %}
+            {% endif %}
+            
+            <button type="submit" class="btn btn-primary w-20">Log in</button>
 
-        <label>
-            <input type="checkbox" name="remember_me"> Remember me
-        </label>
-
-        <button>Log in</button>
-    </form>
-    
-    <p>
-        <a href="#password-reset">Forgot password?</a>
-    </p>
+        </form>
+                
+            <p>
+                <a href="#password-reset">Forgot password?</a>
+            </p> {% endcomment %}
 {% endblock content %}

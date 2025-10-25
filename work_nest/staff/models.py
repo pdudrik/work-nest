@@ -1,6 +1,7 @@
 from datetime import datetime
 from django.db import models
 from django.conf import settings
+from django.urls import reverse
 from django.core.validators import MinValueValidator
 
 
@@ -57,6 +58,10 @@ class PersonalProfile(models.Model):
         return f"{self.first_name} {self.last_name} - personal profile"
 
 
+    def get_absolute_url(self):
+        return reverse("staff:staff-profile-detail", kwargs={"pk": self.pk})
+    
+
 class Employee(models.Model):
     email = models.EmailField(
         max_length=50,
@@ -86,6 +91,11 @@ class Employee(models.Model):
         if self.personal_info:
             return f"{self.personal_info.first_name} {self.personal_info.last_name} - {self.employee_id}"
         return f"Employee {self.employee_id}"
+
+    
+    def get_absolute_url(self):
+        return reverse("staff:staff-profile-detail", kwargs={"pk": self.pk})
+    
 
 
 class Address(models.Model):

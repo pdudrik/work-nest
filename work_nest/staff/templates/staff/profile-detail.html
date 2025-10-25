@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Profile - detail
+{% endblock title %}
+
+
+{% block content %}
+    <div class="container page-div pt-4 pb-4 ps-5 pe-3">
+        <h1>Profile - detail</h1>
+            
+        <div class="container mt-5">
+
+            <h2>
+                {{ employee.first_name }} {{ employee.middle_name }} {{ employee.last_name }}
+            </h2>
+
+            {% if employee.employee_id %}
+                <p class="text-muted">Employee ID: {{ employee.employee_id }}</p>
+            {% endif %}
+
+            <h5>Personal info</h5>
+            <ul class="list-unstyled">
+                <li>Date of birth: {{ employee.date_of_birth }}</li>
+            </ul>
+            
+            <h5>Address</h5>
+            {% if employee.address %}
+                <p>
+                    {{ employee.address.street }} {{ employee.address.number }}<br>
+                    {{ employee.address.postal_code }} {{ employee.address.city }}<br>
+                    {{ employee.address.country }}
+                </p>
+            {% else %}
+            <p class="text-muted"> No address.</p>
+            {% endif %} 
+
+        </div>
+    </div>
+
+{% endblock content %}

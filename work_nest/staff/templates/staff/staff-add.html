@@ -4,6 +4,97 @@
     Staff - Add
 {% endblock title %}
 
+{% block head %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/staff-add.css' %}">
+{% endblock head %}
+
+
 {% block content %}
-    <h1>Staff Add Page</h1>
+    <div class="container page-div pt-4 pb-4 ps-5 pe-3">
+        <h1>Staff Add</h1>
+        
+        <div class="container mt-5">
+
+            <form action="{% url 'staff:staff-add' %}" method="post">
+                {% csrf_token %}
+                <div class="row align-items-center">
+
+                    <div class="col-6">
+                        <div class="input-group mt-2 row">
+                            <span class="col-3 me-2 col-form-label text-end">First name:</span>
+                            {{ personal_form.first_name }}
+                        </div>
+                        
+                        <div class="input-group mt-2 row">
+                            <span class="col-3 me-2 col-form-label text-end">Middle name:</span>
+                            {{ personal_form.middle_name }}
+                        </div>
+                        
+                        <div class="input-group mt-2 row">
+                            <span class="col-3 me-2 col-form-label text-end">Last name:</span>
+                            {{ personal_form.last_name }}
+                        </div>
+                        
+                        <div class="input-group mt-2 row">
+                            <span class="col-3 me-2 col-form-label text-end">Date of birth:</span>
+                            {{ personal_form.date_of_birth }}
+                        </div>
+                    </div>
+                    
+                    <div class="col-6">
+                        
+                        <div class="input-group mt-2 row">
+                            <span class="col-3 me-2 col-form-label text-end">Street:</span>
+                            {{ address_form.street }}
+                        </div>
+                        
+                        <div class="input-group mt-2 row">
+                            <span class="col-3 me-2 col-form-label text-end">Number</span>
+                            {{ address_form.number }}
+                        </div>
+                        
+                        <div class="input-group mt-2 row">
+                            <span class="col-3 me-2 col-form-label text-end">City:</span>
+                            {{ address_form.city }}
+                        </div>
+                        
+                        <div class="input-group mt-2 row">
+                            <span class="col-3 me-2 col-form-label text-end">Country:</span>
+                            {{ address_form.country }}
+                        </div>
+                        
+                        <div class="input-group mt-2 mb-2 row">
+                            <span class="col-3 me-2 col-form-label text-end">Postal code:</span>
+                            {{ address_form.postal_code }}
+                        </div>
+
+                    </div>
+                </div> 
+                    
+                <div class="row">
+
+                    <div class="input-group mt-4 row justify-content-center">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+            </form>
+
+            {% comment %} <p>
+                <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                    Link with href
+                </a>
+                <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                    Button with data-bs-target
+                </button>
+            </p>
+            <div class="collapse" id="collapseExample">
+                <div class="card card-body">
+                    Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
+                </div>
+            </div> {% endcomment %}
+
+
+        </div>
+    </div>
 {% endblock content %}

@@ -1,0 +1,12 @@
+.input-group>input.input-width {
+    flex-grow: 0;
+    flex-basis: 300px;
+}
+
+.input-group>button {
+    width: 100px;
+}
+
+.page-div {
+    background-color:rgb(197, 197, 197);
+}
